@@ -7,6 +7,7 @@ import 'package:study_planner_flutter/services/notification_service.dart';
 import 'package:study_planner_flutter/services/profile_store.dart';
 import 'package:study_planner_flutter/services/task_store.dart';
 import 'package:study_planner_flutter/services/note_store.dart';
+import 'package:study_planner_flutter/services/timer_store.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,7 @@ Future<void> main() async {
     TaskStore.instance.load(),
     ProfileStore.instance.load(),
     NoteStore.instance.load(),
+    TimerStore.instance.load(),
   ]);
 
   runApp(const StudyPlannerApp()); // keep whatever you already had here
