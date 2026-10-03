@@ -24,4 +24,14 @@ class Note {
     }
     return '${date.month}/${date.day}/${date.year % 100}';
   }
+
+  Map<String, dynamic> toJson() => {
+        'text': text,
+        'date': date.toIso8601String(),
+      };
+
+  factory Note.fromJson(Map<String, dynamic> json) => Note(
+        json['text'] as String? ?? '',
+        date: DateTime.tryParse(json['date'] as String? ?? ''),
+      );
 }

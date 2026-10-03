@@ -6,6 +6,7 @@ import 'package:study_planner_flutter/widgets/footer.dart'; // adjust if Footer 
 import 'package:study_planner_flutter/services/notification_service.dart';
 import 'package:study_planner_flutter/services/profile_store.dart';
 import 'package:study_planner_flutter/services/task_store.dart';
+import 'package:study_planner_flutter/services/note_store.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +15,7 @@ Future<void> main() async {
   await Future.wait([
     TaskStore.instance.load(),
     ProfileStore.instance.load(),
+    NoteStore.instance.load(),
   ]);
 
   runApp(const StudyPlannerApp()); // keep whatever you already had here
