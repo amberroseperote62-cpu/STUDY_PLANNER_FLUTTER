@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/cupertino.dart';
 import 'package:study_planner_flutter/services/task_store.dart';
+import 'package:study_planner_flutter/services/timer_store.dart';
 import 'package:study_planner_flutter/widgets/activity_rings_card.dart';
 import 'package:study_planner_flutter/widgets/ios_widgets.dart';
 import 'package:study_planner_flutter/widgets/stat_card.dart';
@@ -45,7 +46,7 @@ class HomeScreen extends StatelessWidget {
     return Stack(
       children: [
         ListenableBuilder(
-          listenable: Listenable.merge([store, ProfileStore.instance]),
+          listenable: Listenable.merge([store, ProfileStore.instance, TimerStore.instance]),
           builder: (context, _) {
             final greeting = '${_greeting(now.hour)}, ${ProfileStore.instance.name}';
             final today = TaskStore.today;
@@ -76,11 +77,11 @@ class HomeScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                   child: ActivityRingsCard(
-                    focus: 78,
+                    focus: TimerStore.instance.focusMinutes,
                     focusGoal: 120,
                     tasks: store.completedFor(today),
                     tasksGoal: math.max(1, store.totalFor(today)),
-                    sessions: 2,
+                    sessions: TimerStore.instance.sessions,
                     sessionsGoal: 5,
                   ),
                 ),
