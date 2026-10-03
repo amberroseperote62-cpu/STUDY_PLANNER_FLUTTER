@@ -19,12 +19,15 @@ class Footer extends StatefulWidget {
 class _FooterState extends State<Footer> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = const [
-    HomeScreen(),
-    TasksScreen(),
-    TimerScreen(),
-    NotesScreen(),
-    ProfileScreen(),
+  List<Widget> get _screens => [
+    HomeScreen(
+      onAddTask: () => setTab(1),
+      onStartTimer: () => setTab(2),
+    ),
+    const TasksScreen(),
+    const TimerScreen(),
+    const NotesScreen(),
+    const ProfileScreen(),
   ];
 
   static const _tabs = [
